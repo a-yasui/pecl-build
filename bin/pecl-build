@@ -54,7 +54,7 @@ main() {
         fatal "package is required."
         usage
     fi
-    debug "install package: $(green $package)"
+    info "install package: $(green $package)"
 
     # extension build base dir
     if [ "x$base_dir" = "x" ];then
