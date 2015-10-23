@@ -114,11 +114,11 @@ main() {
     debug "build_dir: $(green $build_dir)"
 
     info "create build directory: $(green $build_dir)"
-    run mkdir -p $build_dir
     if [ -e "$build_dir/$package_name" ];then
         warn "already exist old dir. remove it."
         run rm -rf $build_dir/$package_name/
     fi
+    run mkdir -p $build_dir
 
     # fetch package
     info "fetch package: $(green $url)"
