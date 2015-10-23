@@ -100,7 +100,7 @@ main() {
     pecl_url=http://pecl.php.net/get
     url=$pecl_url/$package
 
-    tarball=$(curl -I $url 2>/dev/null |grep Content-disposition |cut -d'=' -f2 |tr -d \")
+    tarball=$(curl -I $url 2>/dev/null |grep  Content-disposition |cut -d'=' -f2 |tr -d \")
     package_name=${tarball%.*}
     extension=${package_name%-*}
     version=${package_name##*-}
@@ -117,7 +117,7 @@ main() {
     run mkdir -p $build_dir
     if [ -e "$build_dir/$package_name" ];then
         warn "already exist old dir. remove it."
-        run rm -rf $build_dir/$package_name
+        run rm -rf $build_dir/$package_name/
     fi
 
     # fetch package
@@ -127,7 +127,7 @@ main() {
     # build package
     info "build package"
 
-    run cd $base_dir/$extension/$package_name
+    run cd /$base_dir/$extension/$package_name
     run $phpize
     run ./configure $configure_options
     run make
