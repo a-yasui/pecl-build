@@ -125,9 +125,9 @@ main() {
     run curl $url \| tar xzf - -C $build_dir
 
     # build package
-    info "build package"
+    info "build package :: {$base_dir}/{$extension}/{$package_name}"
 
-    run cd /$base_dir/$extension/$package_name
+    run cd $base_dir/$extension/$package_name
     run $phpize
     run ./configure $configure_options
     run make
